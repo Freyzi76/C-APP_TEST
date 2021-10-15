@@ -1,8 +1,8 @@
-﻿using RestSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -27,19 +27,11 @@ namespace SchoolApp
         private async void Login(object sender, EventArgs e)
         {
 
-            var Client = new RestClient("https://www.youtube.com");
+            var client = new HttpClient();
 
-            //var UrlRequest = "​/api/User/login/" + Username.Text​ + "/" + Password.Text;
+            var result = await client.GetAsync("http://172.16.8.140/api/Courses/users");
 
-            var UrlRequest = "/s/desktop/ec88e548/cssbin/www-main-desktop-watch-page-skeleton.css";
-
-            var request = new RestRequest(UrlRequest, DataFormat.Json);
-
-            var response = await Client.ExecuteAsync(request);
-
-
-            
-            Result.Text = "result  " + response.Content; 
+            Result.Text = "result  " + result; 
 
         }
 

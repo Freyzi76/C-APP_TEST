@@ -1,0 +1,15 @@
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\bin\Release\netstandard2.0\SchoolApp.deps.json
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\bin\Release\netstandard2.0\SchoolApp.dll
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\bin\Release\netstandard2.0\ref\SchoolApp.dll
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\bin\Release\netstandard2.0\SchoolApp.pdb
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\SchoolApp.csproj.AssemblyReference.cache
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\SchoolApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\App.xaml.g.cs
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\MainPage.xaml.g.cs
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\SchoolApp.AssemblyInfoInputs.cache
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\SchoolApp.AssemblyInfo.cs
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\SchoolApp.csproj.CoreCompileInputs.cache
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\XamlC.stamp
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\SchoolApp.dll
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\ref\SchoolApp.dll
+C:\REPO\C-APP_TEST\SchoolApp\SchoolApp\obj\Release\netstandard2.0\SchoolApp.pdb
