@@ -1,0 +1,15 @@
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\bin\Debug\netstandard2.0\SchoolApp.deps.json
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\bin\Debug\netstandard2.0\SchoolApp.dll
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\bin\Debug\netstandard2.0\ref\SchoolApp.dll
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\bin\Debug\netstandard2.0\SchoolApp.pdb
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\SchoolApp.csproj.AssemblyReference.cache
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\SchoolApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\SchoolApp.AssemblyInfoInputs.cache
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\SchoolApp.AssemblyInfo.cs
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\SchoolApp.csproj.CoreCompileInputs.cache
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\SchoolApp.dll
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\ref\SchoolApp.dll
+C:\Users\hugo\source\repos\SchoolApp\SchoolApp\SchoolApp\obj\Debug\netstandard2.0\SchoolApp.pdb
