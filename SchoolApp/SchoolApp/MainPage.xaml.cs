@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SchoolApp.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +28,17 @@ namespace SchoolApp
 
         private async void Login(object sender, EventArgs e)
         {
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sr, cert, chain, sslPolicyErrors) => { return true; };
 
-            var client = new HttpClient();
+            // Pass the handler to httpclient(from you are calling api)
+            HttpClient client = new HttpClient(clientHandler);
 
-            var result = await client.GetAsync("http://172.16.8.140/api/Courses/users");
+            var result = await client.GetStringAsync(App.API_BASE_URL + "/api/User/login/" + Username.Text + "/" + Password.Text);
 
-            Result.Text = "result  " + result; 
+            TokenTakeCare.Set(result);
+
+            Result.Text = "result  " + result;
 
         }
 
