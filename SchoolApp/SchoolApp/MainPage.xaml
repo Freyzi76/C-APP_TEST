@@ -3,20 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SchoolApp.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="HS Control" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
+    <StackLayout BackgroundColor="#444444">
+        
+        
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Label Text="HS Control" HorizontalTextAlignment="Center" TextColor="White" FontSize="40"/>
+            </Frame>
 
-            <Label Text="Result Get UserLogin"></Label>
+            
+        
+        <StackLayout Padding="35">
 
-            <Entry x:Name="Username" Placeholder="Enter Username" />
+            <Label Text="UserLogin" 
+                   HorizontalTextAlignment="Center"
+                   FontSize="Large">
+                
+            </Label>
 
-            <Entry x:Name="Password" Placeholder="Enter Password" />
+            <Entry x:Name="Username" Placeholder="Enter Username" 
+                   Margin="5"
+                   HorizontalTextAlignment="Center"/>
 
-            <Button x:Name="LoginBtn"  Text="Se Connecter" />
+            <Entry x:Name="Password" Placeholder="Enter Password" 
+                   Margin="5"
+                   HorizontalTextAlignment="Center"/>
 
-            <Label x:Name="Result" Text="= : " />
+        </StackLayout>
+
+        
+
+        <AbsoluteLayout HorizontalOptions="Center">
+
+                <Button x:Name="LoginBtn"  Text="Se Connecter"
+                            WidthRequest="200"
+                            BackgroundColor="ForestGreen"
+                            CornerRadius="15"
+                            Clicked="LoginBtn_Clicked"/>
+
+            </AbsoluteLayout>
+
+            <Label x:Name="Result" Text="Token_Result" 
+                   Margin="10"/>
 
 
     </StackLayout>

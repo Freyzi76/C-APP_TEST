@@ -10,21 +10,15 @@ namespace SchoolApp
 
         public const string API_BASE_URL = "https://192.168.1.82";
 
-        public const string Token = "null";
 
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
-
         }
 
         protected override void OnStart()
         {
-
-            
-
+            MainPage = new MainPage();
         }
 
         protected override void OnSleep()
