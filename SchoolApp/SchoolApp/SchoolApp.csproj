@@ -11,6 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\FA5FRR.otf" />
+    <None Remove="Fonts\FA5FRS.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\FA5FRR.otf" />
+    <EmbeddedResource Include="Fonts\FA5FRS.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.12.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />

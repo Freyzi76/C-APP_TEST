@@ -34,7 +34,7 @@ namespace SchoolApp
             // Pass the handler to httpclient(from you are calling api)
             HttpClient client = new HttpClient(clientHandler);
 
-            result = await client.GetStringAsync(App.API_BASE_URL + "/api/User/login/" + Username.Text + "/" + Password.Text);
+            result = await client.GetStringAsync(App.API_BASE_URL + "/api/User/login/" + Username.Text.Trim() + "/" + Password.Text.Trim());
 
             Result.Text = result;
 

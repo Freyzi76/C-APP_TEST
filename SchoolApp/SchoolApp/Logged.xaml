@@ -1,18 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SchoolApp.Logged">
+             x:Class="SchoolApp.Logged"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             android:TabbedPage.BarItemColor="White"
+             android:TabbedPage.BarSelectedItemColor="Black"
+             android:TabbedPage.BarBackgroundColor="#2196F3"
+             >
   <!--Pages can be added as references or inline-->
-    <ContentPage Title="Tab 1">
 
-        <Label x:Name="ResultToken"></Label>
+
+    <ContentPage Title="Server">
+        <ContentPage.IconImageSource>
+            <FontImageSource
+                FontFamily="FA5FRS"
+                Glyph="&#xf233;">
+                
+            </FontImageSource>
+        </ContentPage.IconImageSource>
+
+        <Label x:Name="ResultToken" ></Label>
         
     </ContentPage>
 
-    <ContentPage Title="Tab 2" />
-    
-    
-  <ContentPage Title="Tab 3" />
+    <ContentPage>
+        <ContentPage.IconImageSource>
+            <FontImageSource
+                FontFamily="FA5FRS"
+                Glyph="&#xf5d1;">
+
+            </FontImageSource>
+        </ContentPage.IconImageSource>
+
+
+    </ContentPage>
+
+
+    <ContentPage Title="Setting">
+        <ContentPage.IconImageSource>
+            <FontImageSource
+                FontFamily="FA5FRS"
+                Glyph="&#xf085;">
+
+            </FontImageSource>
+        </ContentPage.IconImageSource>
+        
+        
+    </ContentPage>
     
     
 </TabbedPage>
