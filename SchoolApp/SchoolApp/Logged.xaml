@@ -16,23 +16,34 @@
             <FontImageSource
                 FontFamily="FA5FRS"
                 Glyph="&#xf233;">
-                
+
             </FontImageSource>
         </ContentPage.IconImageSource>
 
-        <Label x:Name="ResultToken" ></Label>
-        
+        <StackLayout>
+
+            <Label x:Name="ResultToken" ></Label>
+
+            <Button x:Name="ButtonToken" Clicked="Button_Clicked"></Button>
+            
+        </StackLayout>
+
     </ContentPage>
 
-    <ContentPage>
+    <ContentPage Title="GetUsers">
         <ContentPage.IconImageSource>
             <FontImageSource
                 FontFamily="FA5FRS"
-                Glyph="&#xf5d1;">
+                Glyph="&#xf0c0;">
 
             </FontImageSource>
         </ContentPage.IconImageSource>
 
+        <StackLayout>
+
+            <Label x:Name="test"></Label>
+            
+        </StackLayout>
 
     </ContentPage>
 

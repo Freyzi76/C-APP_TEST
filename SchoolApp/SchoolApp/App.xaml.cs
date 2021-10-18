@@ -8,7 +8,7 @@ namespace SchoolApp
     public partial class App : Application
     {
 
-        public const string API_BASE_URL = "https://192.168.1.82";
+        public const string API_BASE_URL = "https://92.91.59.5:5000";
 
 
         public App()
