@@ -20,13 +20,18 @@
             </FontImageSource>
         </ContentPage.IconImageSource>
 
-        <StackLayout>
+        <ScrollView>
 
-            <Label x:Name="ResultToken" ></Label>
+            <StackLayout>
 
-            <Button x:Name="ButtonToken" Clicked="Button_Clicked"></Button>
-            
-        </StackLayout>
+                <Label x:Name="ResultToken" ></Label>
+
+                <Button x:Name="ButtonToken" Text="Execute" Clicked="Button_Clicked"></Button>
+
+            </StackLayout>
+
+        </ScrollView>
+        
 
     </ContentPage>
 
@@ -39,11 +44,15 @@
             </FontImageSource>
         </ContentPage.IconImageSource>
 
-        <StackLayout>
+        <ScrollView>
 
-            <Label x:Name="test"></Label>
-            
-        </StackLayout>
+            <StackLayout x:Name="StackTest">
+
+                <Label x:Name="test"></Label>
+
+            </StackLayout>
+
+        </ScrollView>
 
     </ContentPage>
 
@@ -56,9 +65,12 @@
 
             </FontImageSource>
         </ContentPage.IconImageSource>
-        
-        
+
+
     </ContentPage>
-    
-    
+
+
+
+
+
 </TabbedPage>

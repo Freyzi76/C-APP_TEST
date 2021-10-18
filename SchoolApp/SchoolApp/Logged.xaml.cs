@@ -1,4 +1,6 @@
-﻿using SchoolApp.Services;
+﻿using Newtonsoft.Json;
+using SchoolAPI.Models;
+using SchoolApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,8 @@ namespace SchoolApp
             GetUsers();
         }
 
+
+        
         private void GetUsers()
         {
 
@@ -37,9 +41,36 @@ namespace SchoolApp
             // Pass the handler to httpclient(from you are calling api)
             HttpClient client = new HttpClient(clientHandler);
 
-            var result = client.GetStringAsync(App.API_BASE_URL + "/api/Courses/users").Result;
+            string result = client.GetStringAsync(App.API_BASE_URL + "/api/Courses/users").Result;
 
-            test.Text = result;
+            IEnumerable<UserModel> ResultConvert = JsonConvert.DeserializeObject<IEnumerable<UserModel>>(result);
+
+            test.Text = ResultConvert.Select(i => i.Name).ToString();
+
+
+            StackLayout stackLayout;
+
+            
+            foreach (UserModel user in ResultConvert)
+            {
+                StackTest.Children.Add(stackLayout = new StackLayout
+                {
+                    BackgroundColor = Color.Gray,
+                    Margin = new Thickness(10),
+                    
+
+                    Children =
+                    {
+                        new Label { Text = "Prénom : " + user.Name, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
+                        new Label { Text = "Nom : " + user.Firstname, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
+                        new Label { Text = "Em@il : " +user.Email, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
+                        new Button { Text = "BAN", BackgroundColor = Color.Red, Margin = new Thickness(5) }
+                    }
+                    
+
+                });
+                
+            }
 
 
         }
@@ -61,5 +92,7 @@ namespace SchoolApp
             ButtonToken.Text = ResultGet;
 
         }
+
+        
     }
 }
