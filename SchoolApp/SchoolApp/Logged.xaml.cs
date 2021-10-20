@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using SchoolAPI.Models;
-using SchoolApp.Pages;
 using SchoolApp.Services;
 using System;
 using System.Collections.Generic;
@@ -19,7 +18,7 @@ namespace SchoolApp
     public partial class Logged : TabbedPage
     {
 
-        private string Token = "";
+        private string Token;
 
         public Logged(string token)
         {
@@ -43,12 +42,14 @@ namespace SchoolApp
             // Pass the handler to httpclient(from you are calling api)
             HttpClient client = new HttpClient(clientHandler);
 
-            string result = client.GetStringAsync(App.API_BASE_URL + "/api/Courses/users").Result;
+            string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/users").Result;
 
             IEnumerable<UserModel> ResultConvert = JsonConvert.DeserializeObject<IEnumerable<UserModel>>(result);
 
 
             StackLayout stackLayout;
+
+
 
 
             foreach (UserModel user in ResultConvert)
@@ -79,6 +80,21 @@ namespace SchoolApp
             }
 
 
+
+        }
+
+
+
+
+
+        private void ReloadUsers(object sender, EventArgs e)
+        {
+
+
+            StackResultUsers.Children.Clear();
+
+            GetUsers();
+
         }
 
 
@@ -101,12 +117,16 @@ namespace SchoolApp
             // Pass the handler to httpclient(from you are calling api)
             HttpClient client = new HttpClient(clientHandler);
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
             string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/ModifyUser/" + GetUserEmail).Result;
 
-            await Navigation.PushAsync(new View1());
+            UserModel ResultConvert = JsonConvert.DeserializeObject<UserModel>(result);
+
+            await Navigation.PushAsync(new ModifyUserPage(ResultConvert, Token));
+
 
         }
-
 
 
 
@@ -116,16 +136,17 @@ namespace SchoolApp
         private void Button_Clicked(object sender, EventArgs e)
         {
 
-            HttpClientHandler clientHandler = new HttpClientHandler();
-
-            clientHandler.ServerCertificateCustomValidationCallback = (sr, cert, chain, sslPolicyErrors) => { return true; };
+            HttpClientHandler clientHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (sr, cert, chain, sslPolicyErrors) => { return true; }
+            };
 
             // Pass the handler to httpclient(from you are calling api)
             HttpClient client = new HttpClient(clientHandler);
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
 
-            var ResultGet = client.GetStringAsync(App.API_BASE_URL + "/api/Courses/execute").Result;
+            string ResultGet = client.GetStringAsync(App.API_BASE_URL + "/api/Courses/execute").Result;
 
             ButtonToken.Text = ResultGet;
 
