@@ -18,7 +18,7 @@ namespace SchoolApp
 
         protected override void OnStart()
         {
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnSleep()

@@ -56,7 +56,7 @@ namespace SchoolApp
         private void IsLog()
         {
 
-            Application.Current.MainPage = new Logged(result);
+            Application.Current.MainPage = new NavigationPage(new Logged(result));
 
             Navigation.RemovePage(this);
 

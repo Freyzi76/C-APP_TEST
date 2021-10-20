@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SchoolAPI.Models;
+using SchoolApp.Pages;
 using SchoolApp.Services;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,10 @@ namespace SchoolApp
         private void GetUsers()
         {
 
-            HttpClientHandler clientHandler = new HttpClientHandler();
-
-            clientHandler.ServerCertificateCustomValidationCallback = (sr, cert, chain, sslPolicyErrors) => { return true; };
+            HttpClientHandler clientHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (sr, cert, chain, sslPolicyErrors) => { return true; }
+            };
 
             // Pass the handler to httpclient(from you are calling api)
             HttpClient client = new HttpClient(clientHandler);
@@ -45,15 +47,19 @@ namespace SchoolApp
 
             IEnumerable<UserModel> ResultConvert = JsonConvert.DeserializeObject<IEnumerable<UserModel>>(result);
 
-            test.Text = ResultConvert.Select(i => i.Name).ToString();
-
 
             StackLayout stackLayout;
 
-            
+
             foreach (UserModel user in ResultConvert)
             {
-                StackTest.Children.Add(stackLayout = new StackLayout
+
+
+                Button button = new Button { Text = "Modifier", BackgroundColor = Color.YellowGreen, Margin = new Thickness(5), TextColor = Color.White, CommandParameter = user.Email};
+                
+                button.Clicked += ModifyUser;
+
+                StackResultUsers.Children.Add(stackLayout = new StackLayout
                 {
                     BackgroundColor = Color.Gray,
                     Margin = new Thickness(10),
@@ -64,7 +70,7 @@ namespace SchoolApp
                         new Label { Text = "Prénom : " + user.Name, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
                         new Label { Text = "Nom : " + user.Firstname, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
                         new Label { Text = "Em@il : " +user.Email, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
-                        new Button { Text = "BAN", BackgroundColor = Color.Red, Margin = new Thickness(5) }
+                        button
                     }
                     
 
@@ -74,6 +80,38 @@ namespace SchoolApp
 
 
         }
+
+
+
+
+
+
+        private async void ModifyUser(object sender, EventArgs e)
+        {
+
+            Button button = (Button)sender;
+
+            string GetUserEmail = button.CommandParameter.ToString();
+
+            HttpClientHandler clientHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (sr, cert, chain, sslPolicyErrors) => { return true; }
+            };
+
+            // Pass the handler to httpclient(from you are calling api)
+            HttpClient client = new HttpClient(clientHandler);
+
+            string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/ModifyUser/" + GetUserEmail).Result;
+
+            await Navigation.PushAsync(new View1());
+
+        }
+
+
+
+
+
+
 
         private void Button_Clicked(object sender, EventArgs e)
         {

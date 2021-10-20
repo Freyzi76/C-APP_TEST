@@ -46,9 +46,8 @@
 
         <ScrollView>
 
-            <StackLayout x:Name="StackTest">
+            <StackLayout x:Name="StackResultUsers">
 
-                <Label x:Name="test"></Label>
 
             </StackLayout>
 
