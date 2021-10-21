@@ -89,7 +89,7 @@ namespace SchoolApp
 
 
 
-                    var ResultAddUser = client.GetStringAsync(App.API_BASE_URL + "/api/User/ExecuteManageUser/" + USER.Email + "/" + UserName.Text + "/" + UserFirstName.Text + "/" + UserEmail.Text + "/" + ResetPassword.IsToggled + "/" + ISNEWUSER).Result;
+                    string ResultAddUser = client.GetStringAsync(App.API_BASE_URL + "/api/User/ExecuteManageUser/" + UserEmail.Text.Trim() + "/" + UserName.Text.Trim() + "/" + UserFirstName.Text.Trim() + "/New/" + ResetPassword.IsToggled + "/" + ISNEWUSER).Result;
 
                     ResultLabel.Text = ResultAddUser;
 
@@ -101,7 +101,7 @@ namespace SchoolApp
             else
             {
 
-                string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/ExecuteManageUser/" + USER.Email + "/" + UserName.Text + "/" + UserFirstName.Text + "/" + UserEmail.Text + "/" + ResetPassword.IsToggled + "/" + ISNEWUSER).Result;
+                string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/ExecuteManageUser/" + USER.Email.Trim() + "/" + UserName.Text.Trim() + "/" + UserFirstName.Text.Trim() + "/" + UserEmail.Text.Trim() + "/" + ResetPassword.IsToggled + "/" + ISNEWUSER).Result;
 
                 ResultLabel.Text = result;
 
