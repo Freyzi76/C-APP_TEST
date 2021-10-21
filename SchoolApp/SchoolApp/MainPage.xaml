@@ -20,11 +20,11 @@
                 
             </Label>
 
-            <Entry x:Name="Username" Placeholder="Enter Username" 
+            <Entry x:Name="Username" Text="test@test.fr" Placeholder="Enter Username" 
                    Margin="5"
                    HorizontalTextAlignment="Center"/>
 
-            <Entry x:Name="Password" Placeholder="Enter Password" 
+            <Entry x:Name="Password" Text="123456789" Placeholder="Enter Password" 
                    Margin="5"
                    HorizontalTextAlignment="Center"/>
 

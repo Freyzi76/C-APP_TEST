@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolApp.ManageUserPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label x:Name="TitleLabel" Text="Modifier l'utilisateur" HorizontalOptions="Center" FontSize="Title"></Label>
+
+            <Entry x:Name="UserName" HorizontalOptions="Center" HorizontalTextAlignment="Center" WidthRequest="300"/>
+
+            <Entry x:Name="UserFirstName" HorizontalOptions="Center" HorizontalTextAlignment="Center" WidthRequest="300"/>
+
+            <Entry x:Name="UserEmail" HorizontalOptions="Center" HorizontalTextAlignment="Center" WidthRequest="300"/>
+
+            <FlexLayout>
+
+                <Label Text="Mot de passe oublie  " FontSize="Medium" />
+
+                <Switch x:Name="ResetPassword" />
+
+            </FlexLayout>
+
+
+            <Button x:Name="BtnConfirm" Clicked="ExecuteManageUser" />
+
+            <Label x:Name="ResultLabel" Text="NONE" ></Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

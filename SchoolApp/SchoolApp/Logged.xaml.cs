@@ -30,7 +30,7 @@ namespace SchoolApp
         }
 
 
-        
+
         private void GetUsers()
         {
 
@@ -42,12 +42,42 @@ namespace SchoolApp
             // Pass the handler to httpclient(from you are calling api)
             HttpClient client = new HttpClient(clientHandler);
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
             string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/users").Result;
 
             IEnumerable<UserModel> ResultConvert = JsonConvert.DeserializeObject<IEnumerable<UserModel>>(result);
 
 
-            StackLayout stackLayout;
+
+            FlexLayout flexLayout;
+
+            Frame frame;
+
+            ImageButton ReloadBtn = new ImageButton { Source = "reload.png", WidthRequest = 45, Margin = new Thickness(5), BackgroundColor = Color.FromHex("#2196F3"), Padding = 5, CornerRadius = 10 };
+
+            ReloadBtn.Clicked += ReloadUsers;
+
+            ImageButton AddUserBtn = new ImageButton { Source = "addUser.png", WidthRequest = 45, Margin = new Thickness(5), BackgroundColor = Color.FromHex("#198754"), Padding = 5, CornerRadius = 10, CommandParameter = "Add" };
+
+            AddUserBtn.Clicked += ManageUser;
+
+
+            StackResultUsers.Children.Add(flexLayout = new FlexLayout
+            {
+
+                Margin = new Thickness(10),
+
+                Children =
+                        {
+
+                            AddUserBtn,
+                            ReloadBtn,
+
+                        }
+
+
+            });
 
 
 
@@ -55,28 +85,74 @@ namespace SchoolApp
             foreach (UserModel user in ResultConvert)
             {
 
+                Label Firstname = new Label { Text = "Prénom : " + user.Name, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17, TextColor = Color.Black };
 
-                Button button = new Button { Text = "Modifier", BackgroundColor = Color.YellowGreen, Margin = new Thickness(5), TextColor = Color.White, CommandParameter = user.Email};
+                Label Name = new Label { Text = "Nom : " + user.Firstname, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17, TextColor = Color.Black };
+
+                Label Email = new Label { Text = "Em@il : " + user.Email, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17, TextColor = Color.Black };
+
                 
-                button.Clicked += ModifyUser;
 
-                StackResultUsers.Children.Add(stackLayout = new StackLayout
+                ImageButton ModifyBtn = new ImageButton { Source = "edit.png", WidthRequest = 45, Padding = 5, CornerRadius = 10, BackgroundColor = Color.FromHex("#ffc106"), Margin = new Thickness(5), CommandParameter = user.Email };
+
+                    ModifyBtn.Clicked += ManageUser;
+
+
+
+                ImageButton SuppBtn = new ImageButton { Source = "delete.png", WidthRequest = 45, Padding = 5, CornerRadius = 10, BackgroundColor = Color.Red, Margin = new Thickness(5), CommandParameter = user.Email };
+
+                    SuppBtn.Clicked += SuppUser;
+
+
+
+                FlexLayout FlexLayout = new FlexLayout
                 {
-                    BackgroundColor = Color.Gray,
-                    Margin = new Thickness(10),
                     
+                    Direction = FlexDirection.RowReverse,
 
                     Children =
                     {
-                        new Label { Text = "Prénom : " + user.Name, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
-                        new Label { Text = "Nom : " + user.Firstname, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
-                        new Label { Text = "Em@il : " +user.Email, Margin = new Thickness(5), HorizontalTextAlignment = TextAlignment.Center, FontSize = 17},
-                        button
+
+                        SuppBtn,
+                        ModifyBtn,
+                      
                     }
+
+                };
+
+                
+
+
+
+                StackLayout stackLayout = new StackLayout
+                {
+
+                    Children =
+                    {
+                        Firstname,
+                        Name,
+                        Email,
+
+                        FlexLayout,
+                    }
+
+                };
+
+
+
+                StackResultUsers.Children.Add(frame = new Frame
+                {
+                    BackgroundColor = Color.White,
+                    Margin = new Thickness(5),
+                    CornerRadius = 5,
+                    BorderColor = Color.FromHex("#2196F3"),
                     
 
+                    Content = stackLayout,
+
                 });
-                
+
+
             }
 
 
@@ -90,7 +166,6 @@ namespace SchoolApp
         private void ReloadUsers(object sender, EventArgs e)
         {
 
-
             StackResultUsers.Children.Clear();
 
             GetUsers();
@@ -102,10 +177,60 @@ namespace SchoolApp
 
 
 
-        private async void ModifyUser(object sender, EventArgs e)
+        private async void ManageUser(object sender, EventArgs e)
         {
 
-            Button button = (Button)sender;
+            ImageButton button = (ImageButton)sender;
+
+            string GetCommande = button.CommandParameter.ToString();
+
+            if(GetCommande == "Add")
+            {
+
+                UserModel test = new UserModel
+                {
+                    Id = 0,
+                    Firstname = "Prénom",
+                    Name = "Nom",
+                    Email = "Email"
+                };
+
+
+                await Navigation.PushAsync(new ManageUserPage(test, Token, true));
+
+            }
+            else
+            {
+
+                HttpClientHandler clientHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sr, cert, chain, sslPolicyErrors) => { return true; }
+                };
+
+                // Pass the handler to httpclient(from you are calling api)
+                HttpClient client = new HttpClient(clientHandler);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
+                string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/ModifyUser/" + GetCommande).Result;
+
+                UserModel ResultConvert = JsonConvert.DeserializeObject<UserModel>(result);
+
+                await Navigation.PushAsync(new ManageUserPage(ResultConvert, Token, false));
+
+            }
+
+
+
+        }
+
+
+
+
+        private void SuppUser(object sender, EventArgs e)
+        {
+
+            ImageButton button = (ImageButton)sender;
 
             string GetUserEmail = button.CommandParameter.ToString();
 
@@ -119,15 +244,12 @@ namespace SchoolApp
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
 
-            string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/ModifyUser/" + GetUserEmail).Result;
+            string result = client.GetStringAsync(App.API_BASE_URL + "/api/User/SuppUser/" + GetUserEmail).Result;
 
-            UserModel ResultConvert = JsonConvert.DeserializeObject<UserModel>(result);
-
-            await Navigation.PushAsync(new ModifyUserPage(ResultConvert, Token));
-
+            if (result == "OK")
+                GetUsers();
 
         }
-
 
 
 

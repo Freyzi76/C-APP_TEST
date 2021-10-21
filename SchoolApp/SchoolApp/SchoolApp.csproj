@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\**" />
+    <EmbeddedResource Remove="Pages\**" />
+    <None Remove="Pages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Fonts\FA5FRR.otf" />
     <None Remove="Fonts\FA5FRS.otf" />
   </ItemGroup>
@@ -28,15 +34,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Logged.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ModifyUserPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <Compile Update="ManageUserPage.xaml.cs">
+      <DependentUpon>ManageUserPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
+    <EmbeddedResource Update="Logged.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ManageUserPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

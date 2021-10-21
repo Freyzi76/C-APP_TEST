@@ -50,7 +50,6 @@
 
             <StackLayout x:Name="StackResultUsers">
 
-                <Button Text="Reload" Clicked="ReloadUsers"/>
 
             </StackLayout>
 
